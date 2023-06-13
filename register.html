@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="Icons/brain.png" type="image/x-icon" />
+  <title>Sign up</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      margin: 0px;
+    }
+
+    #mb-5 {
+      border: 1.5px solid gray;
+      border-radius: 1px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="mb-5">
+    <h3 class="mb-3">Sign Up</h3>
+    <input type="text" placeholder="Fullname" id="nameInp" class="form-control mb-3" />
+    <input type="text" placeholder="Email" id="emailInp" class="form-control mb-3" />
+    <input type="text" placeholder="Username" id="userInp" class="form-control mb-3" />
+    <input type="password" placeholder="Password" id="passInp" class="form-control mb-3" />
+    <button type="text" id="sub_btn" class="btn btn-outline-primary mb-3 w-100">
+      Sign Up
+    </button>
+    <a href="login.html" class="badge badge-secondary py-1 w-100">Already have an account?</a>
+  </div>
+
+
+  <!--------------------------------script------------------------------------------------------------------------------------------------>
+
+  <script type="module">
+    // -------------------------------Firebase configuration----------------------------------//
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+
+    import {
+      getAuth,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+    // Web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBODwSzpJvyU6DJSkgMqimtGrjd3rtc4HE",
+      authDomain: "quizdb-639e8.firebaseapp.com",
+      databaseURL: "https://quizdb-639e8-default-rtdb.firebaseio.com",
+      projectId: "quizdb-639e8",
+      storageBucket: "quizdb-639e8.appspot.com",
+      messagingSenderId: "363980400085",
+      appId: "1:363980400085:web:72bf87fbccaa543b45495c",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Initialize variables
+    const auth = getAuth()
+    const db = getDatabase();
+
+    // --------------------------References-------------------------------//
+
+    const name = document.getElementById("nameInp");
+    const email = document.getElementById("emailInp");
+    const username = document.getElementById("userInp");
+    const pass = document.getElementById("passInp");
+    const submit = document.getElementById("sub_btn");
+    var userId;
+
+    //--------------------Set up our register function------------------------------//
+
+
+    const userSignUp = async () => {
+
+      var obj = {
+        name: name.value,
+        email: email.value,
+        username: username.value,
+        password: pass.value,
+      };
+      createUserWithEmailAndPassword(auth, obj.email, obj.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          sessionStorage.setItem("userId", auth.currentUser.uid)
+          set(ref(db, '/Users/' + auth.currentUser.uid), {
+            Basic_info: {
+              email_id: obj.email,
+              name: name.value,
+              user_name: username.value
+            }
+          })
+            .then((res) => {
+              alert("Signup successfull!")
+              console.log("Data added to database.");
+              location.replace("home.html");
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch(function (error) {
+          alert("error" + error)
+        })
+    };
+
+    // //-------------------------------assign events ---------------------------------------------------//
+
+    submit.addEventListener('click', userSignUp);
+
+  </script>
+
+</body>
+
+</html>

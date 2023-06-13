@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="Icons/brain.png" type="image/x-icon" />
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login" class="mb-5">
+        <h3 class="mb-3">Login</h3>
+        <input type="text" placeholder="Email" id="emailInp" class="form-control mb-3" />
+        <input type="password" placeholder="Password" id="passInp" class="form-control mb-3" />
+        <a href="#" id="forgot">Forgot Password</a>
+        <button type="text" id="sub_btn" class="btn btn-outline-primary mb-3 w-100">Login</button>
+        <div class="custom-control custom-switch mb-3">
+            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+            <label class="custom-control-label" for="customSwitch1">Keep me logged in</label>
+        </div>
+        <a href="register.html" class="badge badge-secondary py-1 w-100">Want to create a new account?</a>
+    </div>
+
+
+    <!--------------------------------script------------------------------------------------------------------------------------------------>
+
+
+    <script type="module">
+        // -------------------------------Firebase configuration----------------------------------//
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signInWithEmailAndPassword,
+            sendPasswordResetEmail,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+        import { getDatabase, ref, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+
+
+        // Web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBODwSzpJvyU6DJSkgMqimtGrjd3rtc4HE",
+            authDomain: "quizdb-639e8.firebaseapp.com",
+            databaseURL: "https://quizdb-639e8-default-rtdb.firebaseio.com",
+            projectId: "quizdb-639e8",
+            storageBucket: "quizdb-639e8.appspot.com",
+            messagingSenderId: "363980400085",
+            appId: "1:363980400085:web:72bf87fbccaa543b45495c",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // Initialize variables
+        const auth = getAuth()
+        const db = getDatabase()
+
+        // --------------------------References-------------------------------//
+
+
+        const email = document.getElementById("emailInp");
+        const pass = document.getElementById("passInp");
+        const submit = document.getElementById("sub_btn");
+        const forgot_link = document.getElementById("forgot");
+        var userId;
+        var userr = null
+        //--------------------Check if logged in------------------------------//
+
+        onAuthStateChanged(auth, (user) => {
+            console.log(user)
+            userr = user
+        })
+        //------------------------login----------------------------------------//
+
+        function login(event) {
+
+            event.preventDefault();
+
+            var obj = {
+                email: email.value,
+                password: pass.value
+            }
+
+            signInWithEmailAndPassword(auth, obj.email, obj.password)
+                .then((user) => {
+                    keepLoggedIn(user)
+                    alert("Logged In Successfully!")
+                    /*  sessionStorage.setItem("userId", auth.currentUser.uid) */
+                    userId = auth.currentUser.uid
+                })
+                .catch(function (error) {
+                    /*getElementById("alert").innerHTML = error.message;*/
+                    alert("error" + error.message)
+                });
+
+        }
+
+        //------------------------Keep logged in---------------------------------------//
+        function keepLoggedIn(user) {
+            let keepLogIn = document.querySelector("#customSwitch1").checked;
+
+            if (!keepLogIn) {
+                sessionStorage.setItem('user', (user))
+                sessionStorage.setItem('userId', auth.currentUser.uid)
+                console.log(userId)
+                window.location = "home.html";
+            }
+            else {
+                localStorage.setItem('keepLoggedIn', 'yes')
+                localStorage.setItem('user', (user))
+                localStorage.setItem('userId', auth.currentUser.uid)
+                window.location = "home.html";
+            }
+        }
+
+
+        //------------------------send forgot pass mail---------------------------------------//
+
+        function forgotPass() {
+            const email = document.getElementById("emailInp").value;
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    document.getElementById("alert_msg").innerHTML = "Password reset email sent!"
+                })
+                .catch((error) => {
+                    /*  getElementById("alert").innerHTML = error.message; */
+                    alert("error" + error)
+                });
+        }
+
+        //------------------------assign events----------------------------------------//
+
+        submit.addEventListener('click', login);
+        forgot_link.addEventListener('click', forgotPass);
+
+
+
+    </script>
+</body>
+
+</html>
