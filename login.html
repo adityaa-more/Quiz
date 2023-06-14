@@ -103,8 +103,8 @@
 
             signInWithEmailAndPassword(auth, obj.email, obj.password)
                 .then((user) => {
-                    keepLoggedIn(user)
                     alert("Logged In Successfully!")
+                    keepLoggedIn(user)
                     /*  sessionStorage.setItem("userId", auth.currentUser.uid) */
                     userId = auth.currentUser.uid
                 })
