@@ -123,13 +123,13 @@
                 sessionStorage.setItem('user', (user))
                 sessionStorage.setItem('userId', auth.currentUser.uid)
                 console.log(userId)
-                window.location = "home.html";
+                location.replace("index.html");
             }
             else {
                 localStorage.setItem('keepLoggedIn', 'yes')
                 localStorage.setItem('user', (user))
                 localStorage.setItem('userId', auth.currentUser.uid)
-                window.location = "home.html";
+                location.replace("index.html");
             }
         }
 

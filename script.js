@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
   apiKey: "AIzaSyBODwSzpJvyU6DJSkgMqimtGrjd3rtc4HE",
   authDomain: "quizdb-639e8.firebaseapp.com",
@@ -9,7 +8,6 @@ const firebaseConfig = {
   appId: "1:363980400085:web:72bf87fbccaa543b45495c",
 };
 
-
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.database();
@@ -19,7 +17,6 @@ const db = firebase.database();
 var userId = sessionStorage.getItem("userId");
 var userId = localStorage.getItem("userId");
 console.log(userId);
-
 
 //selecting all required elements
 const start_btn = document.querySelector(".start_btn button");
@@ -34,20 +31,16 @@ const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 const waitTxt = document.querySelector(".result_box .wait_text");
 
-
 // if startQuiz button clicked
 start_btn.onclick = () => {
   info_box.classList.add("activeInfo"); //show info box
 };
 
-
 // if exitQuiz button clicked
 exit_btn.onclick = () => {
   // info_box.classList.remove("activeInfo"); //hide info box
   location.replace("home.html");
-
 };
-
 
 // if continueQuiz button clicked
 continue_btn.onclick = () => {
@@ -59,7 +52,6 @@ continue_btn.onclick = () => {
   startTimerLine(0); //calling startTimerLine function
 };
 
-
 // let timeValue = 780;
 let timeValue = 60;
 let que_count = 0;
@@ -69,24 +61,18 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
-
 const quit_quiz = result_box.querySelector(".buttons .quit");
 const leaderBoard = result_box.querySelector(".buttons .leaderboard");
 const matchingData = document.querySelector(".matching-data");
 
-
 // if quitQuiz button clicked
 quit_quiz.onclick = () => {
-  location.replace("home.html"); //reload the current window
+  location.replace("index.html"); //reload the current window
 };
-
-
-
 
 const prev_btn = document.querySelector("footer .prev_btn");
 const next_btn = document.querySelector("footer .next_btn");
 const bottom_ques_counter = document.querySelector("footer .total_que");
-
 
 // if Next Que button clicked
 next_btn.onclick = () => {
@@ -129,11 +115,9 @@ prev_btn.onclick = () => {
   }
 };
 
-
 // getting questions and options from array
 function showQuetions(index) {
   const que_text = document.querySelector(".que_text");
-
 
   //creating a new span and div tag for question and option and passing the value using array index
   let que_tag =
@@ -158,9 +142,7 @@ function showQuetions(index) {
   que_text.innerHTML = que_tag; //adding new span tag inside que_tag
   option_list.innerHTML = option_tag; //adding new div tag inside option_tag
 
-
   const option = option_list.querySelectorAll(".option");
-
 
   // set onclick attribute to all available options
   for (i = 0; i < option.length; i++) {
@@ -171,7 +153,6 @@ function showQuetions(index) {
 let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
-
 //if user clicked on option
 function optionSelected(answer) {
   clearInterval(counter); //clear counter
@@ -179,7 +160,6 @@ function optionSelected(answer) {
   let userAns = answer.textContent; //getting user selected option
   let correcAns = questions[que_count].answer; //getting correct answer from array
   const allOptions = option_list.children.length; //getting all option items
-
 
   if (userAns == correcAns) {
     //if user selected option is equal to array's correct answer
@@ -192,7 +172,6 @@ function optionSelected(answer) {
     answer.classList.add("incorrect"); //adding red color to correct selected option
     answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
     console.log("Wrong Answer");
-
 
     for (i = 0; i < allOptions; i++) {
       if (option_list.children[i].textContent == correcAns) {
@@ -208,9 +187,7 @@ function optionSelected(answer) {
   }
   next_btn.classList.add("show");
   prev_btn.classList.add("show"); //show the next button if user selected any option
-
 }
-
 
 function showResult() {
   info_box.classList.remove("activeInfo"); //hide info box
@@ -219,14 +196,14 @@ function showResult() {
   const scoreText = result_box.querySelector(".score_text");
 
   var today = new Date();
-  var date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+  var date =
+    today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
   var time = today.getHours() + " hrs :" + today.getMinutes() + " min";
   var score_time = time + "\n" + date;
 
   // write score to database--------------------------------------------------------------------------------------------------
   console.log(userId);
-  db
-    .ref("/Users/" + userId + "/Score")
+  db.ref("/Users/" + userId + "/Score")
     .push({
       quiz_name: quiz_nm,
       final_score: userScore,
@@ -239,7 +216,6 @@ function showResult() {
       quit_quiz.classList.remove("hidden");
     })
     .catch((error) => console.log(error));
-
 
   if (userScore > 3) {
     // if user scored more than 3
@@ -271,7 +247,6 @@ function showResult() {
     scoreText.innerHTML = scoreTag;
   }
 }
-
 
 function startTimer(time) {
   counter = setInterval(timer, 1000);
@@ -305,7 +280,6 @@ function startTimer(time) {
   }
 }
 
-
 function startTimerLine(time) {
   counterLine = setInterval(timer, 29);
   function timer() {
@@ -318,7 +292,6 @@ function startTimerLine(time) {
   }
 }
 
-
 function queCounter(index) {
   //creating a new span tag and passing the question number and total question
   let totalQueCounTag =
@@ -330,28 +303,23 @@ function queCounter(index) {
   bottom_ques_counter.innerHTML = totalQueCounTag; //adding new span tag inside bottom_ques_counter
 }
 
-
 // fror leaderboard model
 const modal = document.querySelector(".modal");
 const btnCloseModal = document.querySelector(".close-modal");
 const overlay = document.querySelector(".overlay");
 
-
 // querrySelectorAll used for selecting all elements having same class
 const btnOpenModal = document.querySelector(".show-modal");
-
 
 const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
 };
 
-
 const openModal = function () {
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
 };
-
 
 btnOpenModal.addEventListener("click", openModal);
 btnCloseModal.addEventListener("click", closeModal);
