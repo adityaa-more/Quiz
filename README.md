@@ -1,6 +1,6 @@
 ### See Live: https://adityaa-more.github.io/Quiz/ 
 
-## Quiz App is a dynamic web app to gives quizes.
+## Quiz App is a dynamic web app to play various quizes.
 ## It is a full stack database connected web page.
 ### With features like:				
 -Register <br/>	
