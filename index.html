@@ -17,7 +17,7 @@
 <body class="active">
 
   <!-- Sidebar -->
-  <section class="wrapper">
+  <section class="wrapper active">
     <!--Top menu -->
     <div class="sidebar">
       <div class="p-3 sidebar-heading">
@@ -27,9 +27,9 @@
         </h5>
       </div>
       <!--profile image & text-->
-      <div class="profile ml-3">
-        <h6>Account</h6>
-        <h7 id="user" class="message"></h7>
+      <div class="profile px-3 mt-2">
+        <h6 class="pt-1 mb-1">Account</h6>
+        <h7 id="user" class="w-100 text-truncate" style="display: inline-block;"></h7>
       </div>
       <!--menu item-->
       <ul>
@@ -50,7 +50,7 @@
   </section>
 
   <!-- Homepage w/o Sidebar -->
-  <section id="home">
+  <section class="home active">
     <nav id="navbar" class="navbar bg-body-primary px-3">
       <div>
         <button type="button" id="menu1" class="btn btn-primary mr-2">
@@ -98,29 +98,31 @@
             <h4>Category</h4>
           </div>
           <div class="d-flex align-items-center justify-content-center">
-            <div class="card text-center mb-3 mr-3" style="width: 18rem;">
+            <div class="card pl-3 mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Test quiz</h5>
-                <a href="start1.html" class="stretched-link d-flex justify-content-start">Test Quiz 1</a>
-                <a href="start1.html" class="stretched-link d-flex justify-content-start">Test Quiz 2</a>
+                <a href="start1.html" class="link d-flex justify-content-start">Test Quiz 1</a>
+                <a href="start1.html" class="link d-flex justify-content-start">Test Quiz 2</a>
               </div>
             </div>
-            <div class="card text-center mb-3 mr-3" style="width: 18rem;">
+            <div class="card pl-3 mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Letter and number series</h5>
-                <a href="start2.html" class="stretched-link">Select</a>
+                <a href="start2.html" class="link d-flex justify-content-start">Select</a>
               </div>
             </div>
-            <div class="card text-center mb-3 mr-3" style="width: 18rem;">
+            <div class="card pl-3 mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Verbal Analogy</h5>
-                <a href="start3.html" class="stretched-link">Select</a>
+                <a href="start3.html" class="link d-flex justify-content-start">Select</a>
+                <a href="start3.html" class="link d-flex justify-content-start">Select</a>
               </div>
             </div>
-            <div class="card text-center mb-3 mr-3" style="width: 18rem;">
+            <div class="card pl-3 mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Programing</h5>
-                <a href="start4.html" class="stretched-link">Select</a>
+                <a href="start4.html" class="link d-flex justify-content-start">Select</a>
+                <a href="start4.html" class="link d-flex justify-content-start">Select</a>
               </div>
             </div>
           </div>
@@ -137,6 +139,7 @@
     </section>
     <!-- Dashboard -->
     <section class="dashboard">
+      <div hidden id="spinner"></div>
       <!-- <div class="border-bottom p-3" style="height: 57px;">
         <button type="button" id="menu3" class="btn btn-primary">
           <i class="fa-solid fa-bars"></i>
@@ -148,7 +151,7 @@
           <h7 id="user1" class="message"></h7>
         </div>
         <table class="table">
-          <thead>
+          <thead class="bg-primary table-dark">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Quiz</th>
@@ -205,18 +208,18 @@
     const closemenu = document.querySelector("#menu3");
     const dash_btn = document.querySelector("#dash_btn");
     const home_btn = document.querySelector("#home_btn");
+    const spinner = document.getElementById("spinner");
     var userId = null
 
 
     //------------------------assign events----------------------------------------//
 
-
-
     //-----------------------Checked if loged in (compulsary)-----------------------------------//
 
     onAuthStateChanged(auth, (user) => {
       document.getElementById("user").innerHTML = user.email
-      document.getElementById("user1").innerHTML = user.email                  //user email display
+      document.getElementById("user1").innerHTML = user.email
+      document.querySelector("#userlink").innerHTML = user.email                  //user email display
     });
 
     //------------------------------on login----------------------------------------------//
@@ -237,7 +240,6 @@
         userId = sessionStorage.getItem("userId");
       }
     }
-    let uemail = document.getElementById("user").innerHTML.toString()
 
     window.onload = function () {
       console.log(currentUser)
@@ -254,7 +256,6 @@
         logoutlink.href = "login.html"
       }
       else {
-        userlink.innerHTML = uemail
         userlink.classList.replace("btn", "nav-link")
         userlink.classList.remove("btn-primary")
         userlink.href = "#"
@@ -285,10 +286,7 @@
       });
     }
 
-
-
     //---------------------------------homepage script-------------------------------------------//
-
 
     menu.addEventListener("click", sidebr)
     /* dashmenu.addEventListener("click", sidebr)
@@ -319,6 +317,7 @@
     };
 
     //---------------------------------Dashboard script-------------------------------------------//
+
     var serial = 0
     var tbody = document.querySelector("#tbody1")
 
@@ -340,6 +339,7 @@
       trow.appendChild(td4)
 
       tbody.appendChild(trow)
+      spinner.setAttribute('hidden', '');
     }
 
     function AddAllToTable(TheScore) {
@@ -351,8 +351,10 @@
     }
 
     function getDataFromDb() {
-      const dbref = ref(db, "/Users/" + userId + "/Score");
 
+      spinner.removeAttribute('hidden');
+
+      const dbref = ref(db, "/Users/" + userId + "/Score");
       onValue(dbref, (snapshot) => {
         var scores = [];
         snapshot.forEach(childSnapshot => {
