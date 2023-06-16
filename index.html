@@ -14,22 +14,22 @@
 
 </head>
 
-<body class="active">
-
+<body class="active" onload="loadfun()">
+  <!--  <div id="loader"></div> -->
   <!-- Sidebar -->
   <section class="wrapper active">
     <!--Top menu -->
-    <div class="sidebar">
+    <nav class="sidebar">
       <div class="p-3 sidebar-heading">
         <h5 class="d-flex fa-align-item-center">
-          <i class="fa-solid fa-compass"></i>
+          <i class="fa-solid fa-compass mr-2"></i>
           Menu
         </h5>
       </div>
       <!--profile image & text-->
       <div class="profile px-3 mt-2">
         <h6 class="pt-1 mb-1">Account</h6>
-        <h7 id="user" class="w-100 text-truncate" style="display: inline-block;"></h7>
+        <h7 id="user" class="w-100 text-truncate" style="display: inline-block;">----</h7>
       </div>
       <!--menu item-->
       <ul>
@@ -46,7 +46,7 @@
           </a>
         </li>
       </ul>
-    </div>
+    </nav>
   </section>
 
   <!-- Homepage w/o Sidebar -->
@@ -83,14 +83,6 @@
           </h1>
         </div>
       </section>
-      <!-- <div id="main_img">
-        <video disablePictureInPicture autoplay muted height="auto" width="100%">
-          <source src="Icons/Quiz App.mp4" type="video/mp4">
-        </video>
-        <div>
-          <a id="img_btn" class="btn btn-primary btn-lg" href="#scrollspyHeading1" role="button">Get Started</a>
-        </div>
-      </div> -->
       <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
         <div id="category">
@@ -167,7 +159,12 @@
 
 
   <!--------------------------------script------------------------------------------------------------------------------------------------>
-
+  <script>
+    var load = document.getElementById("loader");
+    function loadfun() {
+      load.style.display = 'none';
+    }
+  </script>
   <script type="module">
 
     // -------------------------------Firebase configuration----------------------------------//

@@ -15,8 +15,8 @@ html {
   scroll-behavior: smooth;
 }
 
-nav {
-  font-size: 1rem;
+#navbar .navbar-brand {
+  font-size: 1.3rem;
 }
 
 .wrapper .sidebar {
@@ -38,8 +38,8 @@ nav {
 }
 .sidebar .sidebar-heading {
   height: 57px;
-  background-color: #f8f9fa;
-  color: #0066ff;
+  background-color: #0066ff;
+  color: #f8f9fa;
   border-bottom: 1px solid #f8f9fa;
 }
 
@@ -151,6 +151,13 @@ body.active .home {
 }
 
 /* Loader */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #fff url("Icons/__Iphone-spinner-1.gif") no-repeat center;
+  z-index: 99999;
+}
 
 #spinner:not([hidden]) {
   position: fixed;
