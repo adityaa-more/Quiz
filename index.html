@@ -16,8 +16,8 @@
 
 <body class="active">
 
-  <!--sidebar-->
-  <div class="wrapper ">
+  <!-- Sidebar -->
+  <section class="wrapper">
     <!--Top menu -->
     <div class="sidebar">
       <div class="p-3"
@@ -27,7 +27,6 @@
           Menu
         </h5>
       </div>
-
       <!--profile image & text-->
       <div class="profile ml-3">
         <h6>Account</h6>
@@ -49,15 +48,13 @@
         </li>
       </ul>
     </div>
+  </section>
 
-  </div>
-
-
-
+  <!-- Homepage w/o Sidebar -->
   <section id="home">
-
-    <div id="onlyhome">
-      <!--navbar-->
+    <!-- Homepage w/o Dashboard -->
+    <section id="onlyhome">
+      <!-- Navbar Homepage -->
       <nav id="navbar" class="navbar bg-body-primary px-3">
         <div>
           <button type="button" id="menu1" class="btn btn-primary mr-2">
@@ -67,10 +64,10 @@
         </div>
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a class="nav-link" href="#scrollspyHeading3">About</a>
+            <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#scrollspyHeading4">Contact</a>
+            <a class="nav-link" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
             <a id="userlink" class="nav-link mx-1" href="#">UserName</a>
@@ -80,71 +77,69 @@
           </li>
         </ul>
       </nav>
-
-      <!-------------------------------------------------------------------------------------------------->
-
-
-
-      <div id="main_img">
+      <section>
+        <div class="spacer layer1">
+          <h1 class="text-pop-up-top ">Quiz.com
+          </h1>
+        </div>
+      </section>
+      <!-- <div id="main_img">
         <video disablePictureInPicture autoplay muted height="auto" width="100%">
           <source src="Icons/Quiz App.mp4" type="video/mp4">
         </video>
         <div>
           <a id="img_btn" class="btn btn-primary btn-lg" href="#scrollspyHeading1" role="button">Get Started</a>
         </div>
-      </div>
-
-
-
+      </div> -->
       <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
         data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-
-        <div id="scrollspyHeading1">
-          <h4>Category</h4>
-          <div class="Q_cards">
+        <div id="category">
+          <div class="d-flex justify-content-center">
+            <h4>Category</h4>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
             <div class="card text-center mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Test quiz</h5>
                 <p class="card-text">Click below to start!</p>
-                <a href="start1.html" class="btn btn-primary">Select Category</a>
+                <a href="start1.html" class="btn btn-primary">Select</a>
               </div>
             </div>
             <div class="card text-center mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Letter and number series</h5>
                 <p class="card-text">Click below to start!</p>
-                <a href="start2.html" class="btn btn-primary">Select Category</a>
+                <a href="start2.html" class="btn btn-primary">Select</a>
               </div>
             </div>
             <div class="card text-center mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Verbal Analogy</h5>
                 <p class="card-text">Click below to start!</p>
-                <a href="start3.html" class=" btn btn-primary">Select Category</a>
+                <a href="start3.html" class=" btn btn-primary">Select</a>
               </div>
             </div>
             <div class="card text-center mb-3 mr-3" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Programing</h5>
                 <p class="card-text">Click below to start!</p>
-                <a href="start4.html" class="btn btn-primary">Select Category</a>
+                <a href="start4.html" class="btn btn-primary">Select</a>
               </div>
             </div>
           </div>
         </div>
-
-        <h4 id="scrollspyHeading3">About us</h4>
-        <p>...</p>
-        <h4 id="scrollspyHeading4">Contact</h4>
-        <p>...</p>
+        <div id="about">
+          <h4 class="d-flex justify-content-center">About us</h4>
+          <p>...</p>
+        </div>
+        <div id="contact">
+          <h4 class="d-flex justify-content-center">Contact</h4>
+          <p>...</p>
+        </div>
       </div>
-
-
-    </div>
-
-    <!-----------------------------   Dashboard ------------------------------------------------->
-
-    <div class="dashboard">
+    </section>
+    <!-- Dashboard -->
+    <section class="dashboard">
       <div class="border-bottom p-3" style="height: 59px;">
         <button type="button" id="menu3" class="btn btn-primary">
           <i class="fa-solid fa-bars"></i>
@@ -167,11 +162,7 @@
           <tbody id="tbody1"></tbody>
         </table>
       </div>
-    </div>
-
-
-    <!------------------------------------------------------------------------------------------------------------------------------------->
-
+    </section>
   </section>
 
 
