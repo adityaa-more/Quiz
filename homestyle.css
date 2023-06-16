@@ -32,6 +32,12 @@ html {
   margin-left: 225px;
   transition: all 0.3s ease;
 }
+.sidebar .sidebar-heading {
+  height: 57px;
+  background-color: #f8f9fa;
+  color: #9d4edd;
+  border-bottom: 1px solid #f8f9fa;
+}
 
 .sidebar .profile {
   color: #f8f9fa;
@@ -133,7 +139,7 @@ body.active #home {
 .text-pop-up-top {
   position: absolute;
   top: 60%;
-  color: #2b2730;
+  color: #023047;
   font-size: 5rem;
   font-weight: 700;
   animation: text-pop-up-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;

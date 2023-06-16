@@ -20,9 +20,8 @@
   <section class="wrapper">
     <!--Top menu -->
     <div class="sidebar">
-      <div class="p-3"
-        style="height: 59px; background-color: #f8f9fa; color: #9d4edd;  border-bottom: 1px solid #f8f9fa;">
-        <h5 style=" margin: 0%; align-items: center;">
+      <div class="p-3 sidebar-heading">
+        <h5 class="d-flex fa-align-item-center">
           <i class="fa-solid fa-compass"></i>
           Menu
         </h5>
@@ -52,31 +51,32 @@
 
   <!-- Homepage w/o Sidebar -->
   <section id="home">
+    <nav id="navbar" class="navbar bg-body-primary px-3">
+      <div>
+        <button type="button" id="menu1" class="btn btn-primary mr-2">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#">Quiz.com</a>
+      </div>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a id="userlink" class="nav-link mx-1" href="#">UserName</a>
+        </li>
+        <li class="nav-item">
+          <a id="logoutlink" class="nav-link mx-1" href="#">Log Out</a>
+        </li>
+      </ul>
+    </nav>
     <!-- Homepage w/o Dashboard -->
     <section id="onlyhome">
       <!-- Navbar Homepage -->
-      <nav id="navbar" class="navbar bg-body-primary px-3">
-        <div>
-          <button type="button" id="menu1" class="btn btn-primary mr-2">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <a class="navbar-brand" href="#">Quiz.com</a>
-        </div>
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a id="userlink" class="nav-link mx-1" href="#">UserName</a>
-          </li>
-          <li class="nav-item">
-            <a id="logoutlink" class="nav-link mx-1" href="#">Log Out</a>
-          </li>
-        </ul>
-      </nav>
+
       <section>
         <div class="spacer layer1">
           <h1 class="text-pop-up-top ">Quiz.com
@@ -137,11 +137,11 @@
     </section>
     <!-- Dashboard -->
     <section class="dashboard">
-      <div class="border-bottom p-3" style="height: 59px;">
+      <!-- <div class="border-bottom p-3" style="height: 57px;">
         <button type="button" id="menu3" class="btn btn-primary">
           <i class="fa-solid fa-bars"></i>
         </button>
-      </div>
+      </div> -->
       <div class="mx-5 mt-4 ">
         <div class="mb-4 ml-3">
           <h5 class="font-weight-bolder mb-1">Dashboard</h5>
@@ -277,6 +277,8 @@
         localStorage.removeItem('user')
         localStorage.removeItem('keepLoggedIn')
         localStorage.removeItem('userId')
+        document.getElementById("user").innerHTML = ""
+        document.getElementById("user1").innerHTML = ""
         window.location = "index.html"
       }).catch((error) => {
         alert("error" + error)
@@ -306,13 +308,14 @@
         else {
           home_page.style.display = 'none'
           dash.style.display = 'block'
+          document.querySelector(".nav-pills").style.display = 'none'
           getDataFromDb();
         }
       })
     };
 
     home_btn.onclick = () => {
-      window.location = "index.html"
+      location.replace("index.html")
     };
 
     //---------------------------------Dashboard script-------------------------------------------//
