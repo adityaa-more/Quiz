@@ -1,3 +1,6 @@
+//TODO: Change fetching of questions
+//todo: optimize making 1 quiz html
+
 const firebaseConfig = {
   apiKey: "AIzaSyBODwSzpJvyU6DJSkgMqimtGrjd3rtc4HE",
   authDomain: "quizdb-639e8.firebaseapp.com",
