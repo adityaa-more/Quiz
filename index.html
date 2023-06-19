@@ -17,8 +17,8 @@
 
 </head>
 
-<body class="active" onload="loadfun()">
-
+<body class="active">
+  <!-- onload="loadfun()" -->
 
   <!--  <div id="loader"></div> -->
   <!-- Sidebar -->
@@ -164,12 +164,14 @@
 
 
   <!--------------------------------script------------------------------------------------------------------------------------------------>
-  <script>
+  <!--  <script>
     var load = document.getElementById("loader");
     function loadfun() {
       load.style.display = 'none';
     }
-  </script>
+  </script> -->
+
+  <!-- ------------------------------------------------------------------------------------------------------------------------ -->
   <script type="module">
 
     // -------------------------------Firebase configuration----------------------------------//
@@ -181,7 +183,7 @@
       signOut
     } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
 
-    import { getDatabase, ref, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+    import { getDatabase, ref, get, child, onValue, orderByChild, query } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
 
     // Web app's Firebase configuration
     const firebaseConfig = {
@@ -356,8 +358,9 @@
 
       spinner.removeAttribute('hidden');
 
-      const dbref = ref(db, "/Users/" + userId + "/Score");
-      onValue(dbref, (snapshot) => {
+      const q = query(ref(db, "/Users/" + userId + "/Score"), orderByChild('final_score', 'desc'));
+
+      onValue(q, (snapshot) => {
         var scores = [];
         snapshot.forEach(childSnapshot => {
           scores.push(childSnapshot.val());
