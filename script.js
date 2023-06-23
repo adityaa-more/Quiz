@@ -17,8 +17,13 @@ const db = firebase.database();
 
 // database elements
 
-var userId = sessionStorage.getItem("userId");
-var userId = localStorage.getItem("userId");
+let keepLoggedIn = localStorage.getItem("keepLoggedIn");
+if (keepLoggedIn == "yes") {
+  var userId = localStorage.getItem("userId");
+} else {
+  var userId = sessionStorage.getItem("userId");
+}
+
 console.log(userId);
 
 //selecting all required elements
