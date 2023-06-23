@@ -50,9 +50,8 @@
         import {
             getAuth,
             onAuthStateChanged,
-            signInWithEmailAndPassword,
+            setPersistence, signInWithEmailAndPassword, browserSessionPersistence,
             sendPasswordResetEmail,
-            signOut
         } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
 
         import { getDatabase, ref, get, child, onValue } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
@@ -100,13 +99,19 @@
                 email: email.value,
                 password: pass.value
             }
-
-            signInWithEmailAndPassword(auth, obj.email, obj.password)
-                .then((user) => {
-                    alert("Logged In Successfully!")
-                    keepLoggedIn(user)
-                    /*  sessionStorage.setItem("userId", auth.currentUser.uid) */
-                    userId = auth.currentUser.uid
+            setPersistence(auth, browserSessionPersistence)
+                .then(() => {
+                    signInWithEmailAndPassword(auth, obj.email, obj.password)
+                        .then((userCredential) => {
+                            alert("Logged In Successfully!")
+                            const user = userCredential.user;
+                            keepLoggedIn(user)
+                            /* sessionStorage.setItem("userId", auth.currentUser.uid) */
+                            userId = auth.currentUser.uid
+                        })
+                        .catch((error) => {
+                            alert("error" + error.message)
+                        });
                 })
                 .catch(function (error) {
                     /*getElementById("alert").innerHTML = error.message;*/
