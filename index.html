@@ -34,7 +34,7 @@
       <!--profile image & text-->
       <div class="profile px-3 mt-2">
         <h6 class="pt-1 mb-1">Account</h6>
-        <h7 id="user" class="w-100 text-truncate" style="display: inline-block;">----</h7>
+        <h7 id="user" class="w-100 text-truncate" style="display: inline-block;"></h7>
       </div>
       <!--menu item-->
       <ul>
@@ -275,6 +275,7 @@
     //---------------------------------logout script-------------------------------------------//
 
     function logout() {
+
       signOut(auth).then(() => {
         alert("signout sucessful")
         sessionStorage.removeItem('user')
@@ -288,6 +289,7 @@
       }).catch((error) => {
         alert("error" + error)
       });
+
     }
 
     //---------------------------------homepage script-------------------------------------------//
