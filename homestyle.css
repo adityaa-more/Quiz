@@ -126,7 +126,11 @@ body.active .home {
   left: 78%;
 }
 
-/* Landing SVG */
+section {
+  display: block;
+}
+
+/* Landing SVGs */
 
 .spacer {
   position: relative;
@@ -135,18 +139,17 @@ body.active .home {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .layer1 {
   background-image: url("./wave-haikei.svg");
 }
 
+.layer2 {
+  background-image: url("./wave-haikei1.svg");
+}
+
 .text-pop-up-top {
-  position: absolute;
-  top: 60%;
   color: #023047;
   font-size: 5rem;
   font-weight: 700;
