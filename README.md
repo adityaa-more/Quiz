@@ -1,4 +1,4 @@
-### See Live: https://adityaa-more.github.io/QuizApp/
+### [See Live](https://sawaal-jawaab.netlify.app/)
 
 ## Quiz App is a dynamic web app to play various quizes.
 ## It is a full stack database connected web page.
