@@ -67,7 +67,7 @@
         <button type="button" id="menu1" class="btn btn-primary mr-2">
           <i class="fa-solid fa-bars"></i>
         </button>
-        <a class="navbar-brand fs-3 ms-2 " href="#">Quiz me up</a>
+        <a class="navbar-brand fs-4 ms-2 " href="#">Quiz me up</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -81,7 +81,7 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#socials">Socials</a>
+              <a class="nav-link" href="#contact">Contact</a>
             </li>
           </ul>
           <form class="d-flex gap-3 me-2" role="search">
@@ -97,9 +97,9 @@
 
 
       <!-- Navbar Homepage -->
-
-      <section class="spacer layer1 d-flex justify-content-center align-items-center">
-        <h1 class="text-pop-up-top">Quiz.com</h1>
+      <section class="spacer layer1 d-flex flex-column justify-content-center align-items-center">
+        <h1 class="text-pop-up-top ">SawaalJawaab.com</h1>
+        <p class="fs-5 mt-4">Best quiz platform available!</p>
       </section>
 
 
@@ -110,7 +110,7 @@
         <div class="w-50 px-5 py-5 d-flex flex-column justify-content-center">
           <h2 class=" mb-5">Generate quiz on your topic!</h2>
           <div class="input-group input-group-lg mb-5 w-75">
-            <input type="text" class="form-control" aria-label="Sizing example input"
+            <input type="text" class="form-control" aria-label="Sizing example input" placeholder="Enter topic"
               aria-describedby="inputGroup-sizing-lg">
           </div>
           <button type="button" class="btn btn-primary w-25">Generate</button>
@@ -121,8 +121,7 @@
       <section class="spacer layer2 py-4" id="category">
         <h4 class="text-center fs-2 mt-4 mb-4">Categories</h4>
 
-        <div class="p-4 d-flex justify-content-evenly flex-wrap gap-4">
-
+        <div class="p-4 d-flex justify-content-evenly flex-wrap gap-4 fs-6">
           <div class="card shadow" style="width: 22rem;">
             <div class="card-body">
               <h5 class="card-title p-2">Aptitude</h5>
@@ -177,7 +176,6 @@
               <a href="start2.html" class="card-link">Select</a>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -197,24 +195,28 @@
       </section>
 
 
-      <section id="contact" class="layer3 py-4 d-flex flex-column">
-        <h3 class="mb-5 mt-4 text-center">Socials</h3>
-        <div class="socials d-flex justify-content-center gap-4 mb-4">
-          <i class="fa-brands fa-github fa-xl"></i>
-          <i class="fa-brands fa-facebook fa-xl"></i>
-          <i class="fa-brands fa-dev fa-xl"></i>
-          <i class="fa-brands fa-square-behance fa-xl"></i>
+      <section id="contact" class="layer3 pt-4 d-flex flex-wrap flex-column align-content-center">
+        <h3 class="mb-5 mt-4 text-center">Contact Us</h3>
+        <div class="input-group w-25 mb-4">
+          <span class="input-group-text">Enter <br> message</span>
+          <textarea class="form-control" aria-label="With textarea"></textarea>
+          <button class="btn btn-secondary" type="button" id="button-addon2">Submit</button>
+        </div>
+        <div class="socials gap-4 mb-4 mt-4 d-flex justify-content-center">
+          <a href="" class="text-dark"><i class="fa-brands fa-github fa-2xl"></i></a>
+          <a href="" class="text-dark"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+          <a href="" class="text-dark"><i class="fa-brands fa-dev fa-2xl"></i></a>
+          <a href="" class="text-dark"><i class="fa-brands fa-square-behance fa-2xl"></i></a>
         </div>
       </section>
 
-      <!-- </section> -->
     </section>
 
 
     <!-- Dashboard -->
     <section class="dashboard">
       <!-- <div hidden id="spinner"></div> -->
-      <div class="mx-5 mt-4 ">
+      <div class="px-5 pt-4 ">
         <div class="mb-4 ml-3">
           <h5 class="font-weight-bolder mb-1">Dashboard</h5>
           <h7 id="user1" class="message"></h7>
@@ -232,6 +234,8 @@
         </table>
       </div>
     </section>
+
+
   </section>
 
 
