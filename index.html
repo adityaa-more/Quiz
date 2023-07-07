@@ -1,6 +1,7 @@
 <!--Todo: make responsive-->
 <!--Todo: make loader work-->
 <!--todo: order dashboard data according to time-->
+<!--todo: correct navbar check all bootstrp components-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,16 +10,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="Icons/brain.png" type="image/x-icon" />
+  <link rel="icon" href="./Icons/quiz.png" type="image/x-icon" />
   <title>Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <script src="https://kit.fontawesome.com/d362cfdaed.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="homestyle.css">
-
 </head>
 
 <body class="active">
@@ -26,7 +27,7 @@
 
   <!--  <div id="loader"></div> -->
   <!-- Sidebar -->
-  <section class="wrapper active">
+  <section id="sidebar" class="wrapper active">
     <!--Top menu -->
     <nav class="sidebar">
       <div class="p-3 sidebar-heading">
@@ -41,7 +42,7 @@
         <h7 id="user" class="w-100 text-truncate" style="display: inline-block;"></h7>
       </div>
       <!--menu item-->
-      <ul>
+      <ul class="p-0">
         <li>
           <a href="#" class="active">
             <span class="icon"><i class="fa-solid fa-house"></i></span>
@@ -60,91 +61,159 @@
 
   <!-- Homepage w/o Sidebar -->
   <section class="home active">
-    <nav id="navbar" class="navbar bg-body-tertiary">
+
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <div>
-          <button type="button" id="menu1" class="btn btn-primary mr-2">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <a class="navbar-brand" href="#">Quiz.com</a>
+        <button type="button" id="menu1" class="btn btn-primary mr-2">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <a class="navbar-brand fs-3 ms-2 " href="#">Quiz me up</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#socials">Socials</a>
+            </li>
+          </ul>
+          <form class="d-flex gap-3 me-2" role="search">
+            <a id="userlink" class="nav-link" href="#">UserName</a>
+            <a id="logoutlink" class="nav-link" href="#">Log Out</a>
+          </form>
         </div>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a id="userlink" class="nav-link mx-1" href="#">UserName</a>
-          </li>
-          <li class="nav-item">
-            <a id="logoutlink" class="nav-link mx-1" href="#">Log Out</a>
-          </li>
-        </ul>
       </div>
     </nav>
+
     <!-- Homepage w/o Dashboard -->
     <section id="onlyhome">
+
+
       <!-- Navbar Homepage -->
 
       <section class="spacer layer1 d-flex justify-content-center align-items-center">
         <h1 class="text-pop-up-top">Quiz.com</h1>
       </section>
-      <!-- <section data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
-        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-2 rounded-2" tabindex="0"> -->
-      <section class="spacer layer2" id="category">
-        <h4 class="text-center">Category</h4>
-        <div class="d-flex flex-column justify-content-center">
-          <div class="d-flex gap-2 my-2">
-            <div class="flex-grow-1 card p-1" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Test quiz</h5>
-                <a href="start1.html" class="link d-flex justify-content-start">Test Quiz 1</a>
-                <a href="start1.html" class="link d-flex justify-content-start">Test Quiz 2</a>
-              </div>
-            </div>
-            <div class="flex-grow-1 card p-1" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Letter and number series</h5>
-                <a href="start2.html" class="link d-flex justify-content-start">Select</a>
-              </div>
-            </div>
-            <div class="flex-grow-1 card p-1" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Verbal Analogy</h5>
-                <a href="start3.html" class="link d-flex justify-content-start">Select</a>
-                <a href="start3.html" class="link d-flex justify-content-start">Select</a>
-              </div>
-            </div>
-            <div class="flex-grow-1 card p-1" style="width: 18rem;">
-              <div class="card-body">
-                <h5 class="card-title">Programing</h5>
-                <a href="start4.html" class="link d-flex justify-content-start">Select</a>
-                <a href="start4.html" class="link d-flex justify-content-start">Select</a>
-              </div>
-            </div>
+
+
+      <section class="spacer d-flex py-4">
+        <div class="w-50">
+          <img class="h-100" src="./Icons/AI.jpg" alt="AI">
+        </div>
+        <div class="w-50 px-5 py-5 d-flex flex-column justify-content-center">
+          <h2 class=" mb-5">Generate quiz on your topic!</h2>
+          <div class="input-group input-group-lg mb-5 w-75">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-lg">
           </div>
+          <button type="button" class="btn btn-primary w-25">Generate</button>
         </div>
       </section>
-      <div id="about">
-        <h4 class="d-flex justify-content-center">About us</h4>
-        <p>...</p>
-      </div>
-      <div id="contact">
-        <h4 class="d-flex justify-content-center">Contact</h4>
-        <p>...</p>
-      </div>
+
+
+      <section class="spacer layer2 py-4" id="category">
+        <h4 class="text-center fs-2 mt-4 mb-4">Categories</h4>
+
+        <div class="p-4 d-flex justify-content-evenly flex-wrap gap-4">
+
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title p-2">Aptitude</h5>
+              <ul>
+                <li> <a class="icon-link icon-link-hover" href="#">
+                    Icon link
+                    <svg class="bi" aria-hidden="true">
+                      <use xlink:href="#arrow-right"></use>
+                    </svg>
+                  </a></li>
+                <li> <a class="icon-link icon-link-hover" href="#">
+                    Icon link
+                    <svg class="bi" aria-hidden="true">
+                      <use xlink:href="#arrow-right"></use>
+                    </svg>
+                  </a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Letter and number series</h5>
+              <a href="start2.html" class="card-link">Select</a>
+              <a href="start2.html" class="card-link">Select</a>
+            </div>
+          </div>
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Verbal Analogy</h5>
+              <a href="start3.html" class="card-link">Select</a>
+              <a href="start3.html" class="card-link">Select</a>
+            </div>
+          </div>
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Programing</h5>
+              <a href="start4.html" class="card-link">Select</a>
+              <a href="start4.html" class="card-link">Select</a>
+            </div>
+          </div>
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Letter and number series</h5>
+              <a href="start2.html" class="card-link">Select</a>
+              <a href="start2.html" class="card-link">Select</a>
+            </div>
+          </div>
+          <div class="card shadow" style="width: 22rem;">
+            <div class="card-body">
+              <h5 class="card-title">Letter and number series</h5>
+              <a href="start2.html" class="card-link">Select</a>
+              <a href="start2.html" class="card-link">Select</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <section id="about" class="spacer d-flex py-5 justify-content-center">
+        <div class="w-50 px-5 py-5">
+          <h1 class="fs-1 mb-5 mt-5 ps-3">About us</h1>
+          <p class="mx-3 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error cumque impedit,
+            aut ipsa
+            deleniti, nulla
+            ipsam, non unde rerum facere dolor molestiae labore repudiandae numquam aliquam ab illum iusto. Placeat!</p>
+          <button type="button" class="btn btn-primary ms-3">Read More</button>
+        </div>
+        <div class="w-50">
+          <img class="w-100" src="./Icons/about.jpg" alt="about us image">
+        </div>
+      </section>
+
+
+      <section id="contact" class="layer3 py-4 d-flex flex-column">
+        <h3 class="mb-5 mt-4 text-center">Socials</h3>
+        <div class="socials d-flex justify-content-center gap-4 mb-4">
+          <i class="fa-brands fa-github fa-xl"></i>
+          <i class="fa-brands fa-facebook fa-xl"></i>
+          <i class="fa-brands fa-dev fa-xl"></i>
+          <i class="fa-brands fa-square-behance fa-xl"></i>
+        </div>
+      </section>
+
       <!-- </section> -->
     </section>
+
+
     <!-- Dashboard -->
     <section class="dashboard">
-      <div hidden id="spinner"></div>
-      <!-- <div class="border-bottom p-3" style="height: 57px;">
-        <button type="button" id="menu3" class="btn btn-primary">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div> -->
+      <!-- <div hidden id="spinner"></div> -->
       <div class="mx-5 mt-4 ">
         <div class="mb-4 ml-3">
           <h5 class="font-weight-bolder mb-1">Dashboard</h5>
@@ -167,14 +236,8 @@
 
 
   <!--------------------------------script------------------------------------------------------------------------------------------------>
-  <!--  <script>
-    var load = document.getElementById("loader");
-    function loadfun() {
-      load.style.display = 'none';
-    }
-  </script> -->
 
-  <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
   <script type="module">
 
     // -------------------------------Firebase configuration----------------------------------//
@@ -261,6 +324,7 @@
         logoutlink.classList.replace("nav-link", "btn")
         logoutlink.classList.add("btn-primary")
         logoutlink.href = "login.html"
+        document.getElementById("menu1").style.display = "none";
       }
       else {
         userlink.classList.replace("btn", "nav-link")
@@ -271,6 +335,7 @@
         logoutlink.classList.replace("btn", "nav-link")
         logoutlink.classList.remove("btn-primary")
         logoutlink.addEventListener('click', logout);
+        document.getElementById("menu1").style.display = "block";
 
       }
     }

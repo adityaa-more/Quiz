@@ -141,12 +141,15 @@ section {
   background-size: cover;
 }
 
-.layer1 {
-  background-image: url("./wave-haikei.svg");
+.layer1,
+.layer2,
+.layer3 {
+  background-color: gainsboro;
+  background-image: url("");
 }
 
 .layer2 {
-  background-image: url("./wave-haikei1.svg");
+  background-image: url("");
 }
 
 .text-pop-up-top {
